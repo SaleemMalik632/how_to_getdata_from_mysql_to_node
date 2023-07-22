@@ -1,0 +1,30 @@
+const { query } = require('express');
+const mysql = require('mysql');
+
+const connection  =  mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'',
+    database:'malik' // name of the database
+});
+// check if there is any error or not in the connection for that we do this 
+
+connection.connect((error)=>{
+     if (error) {
+        console.log('error in the connection ');
+     }else{
+        console.log('connected  to the malik database');
+     }
+});
+
+// after the connecion is done write the quary to get all the data from the mysql database 
+
+const  query1 = 'select * from malik1' // malik1 is my table name
+
+connection.query(query1 , (err , results) =>{
+    if(err){
+      console.log('error in the fetching data');
+    }else{
+        console.log(results);
+    }
+}  );
